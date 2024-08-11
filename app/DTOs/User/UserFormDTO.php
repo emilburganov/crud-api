@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 
 readonly class UserFormDTO
 {
-    public int $user_id;
-    public string $body;
+    public string $name;
 
     public static function fromRequest(Request $request): UserFormDTO
     {
@@ -18,8 +17,7 @@ readonly class UserFormDTO
     {
         $dto = new self();
 
-        $dto->user_id = $data['user_id'];
-        $dto->body = $data['body'];
+        $dto->name = $data['name'];
 
         return $dto;
     }
