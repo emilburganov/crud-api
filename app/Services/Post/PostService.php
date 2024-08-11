@@ -5,7 +5,6 @@ namespace App\Services\Post;
 use App\DTOs\Post\PostFormDTO;
 use App\Models\Comment;
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
 class PostService

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Resources\PostResource;
-use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;

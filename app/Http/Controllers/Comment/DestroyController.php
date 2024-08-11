@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Comment;
 
 use App\Models\Comment;
-use App\Models\Post;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
