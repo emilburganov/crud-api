@@ -11,6 +11,8 @@ Route::group(['namespace' => '\App\Http\Controllers\Post'], function () {
 
 Route::group(['namespace' => '\App\Http\Controllers\User'], function () {
     Route::get('/users', 'IndexController');
+    Route::get('/users/{user}/posts', 'GetPostsController');
+    Route::get('/users/{user}/comments', 'GetCommentsController');
     Route::post('/users', 'StoreController');
     Route::put('/users/{user}', 'UpdateController');
     Route::delete('/users/{user}', 'DestroyController');

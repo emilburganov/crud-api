@@ -3,6 +3,8 @@
 namespace App\Services\User;
 
 use App\DTOs\User\UserFormDTO;
+use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -46,5 +48,23 @@ class UserService
     public function destroy(User $user): void
     {
         $user->delete();
+    }
+
+    /**
+     * @param User $user
+     * @return Collection<int, Post>
+     */
+    public function getPosts(User $user): Collection
+    {
+        return $user->posts;
+    }
+
+    /**
+     * @param User $user
+     * @return Collection<int, Comment>
+     */
+    public function getComments(User $user): Collection
+    {
+        return $user->comments;
     }
 }
