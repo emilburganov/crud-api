@@ -9,12 +9,12 @@ readonly class PostFormDTO
     public int $user_id;
     public string $body;
 
-    public static function fromRequest(Request $request): UserFormDTO
+    public static function fromRequest(Request $request): PostFormDTO
     {
         return self::createFromArray($request->all());
     }
 
-    public static function createFromArray(array $data): UserFormDTO
+    public static function createFromArray(array $data): PostFormDTO
     {
         $dto = new self();
 
