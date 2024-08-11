@@ -13,11 +13,19 @@ class UpdateController extends BaseController
 {
     /**
      * @param UpdateRequest $request
-     * @param Comment $comment
+     * @param int $id
      * @return JsonResponse
      */
-    public function __invoke(UpdateRequest $request, Comment $comment): JsonResponse
+    public function __invoke(UpdateRequest $request, int $id): JsonResponse
     {
+        $comment = Comment::find($id);
+
+        if (empty($comment)) {
+            return response()->json([
+                "message" => "Comment not found."
+            ], Response::HTTP_NOT_FOUND);
+        }
+
         $dto = CommentFormDTO::fromRequest($request);
 
         $comment = $this->service->update($dto, $comment);

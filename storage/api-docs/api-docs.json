@@ -7,17 +7,329 @@
     },
     "paths": {
         "/api/": {},
-        "/api/posts/{post}": {
+        "/api/comments/{id}": {
+            "put": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Update Comment",
+                "description": "Update Commment",
+                "operationId": "07af8ba7efc30ac610bb78ff232dd24f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Comment",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "post_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Hello, World!"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Accepted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "post_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 2
+                                        },
+                                        "body": {
+                                            "type": "string",
+                                            "example": "Hello, World!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Comment not found."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "integer",
+                                            "example": "The body field is required."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "body": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The body field is required."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Delete Comment",
+                "description": "Delete Comment",
+                "operationId": "363c4991a1c7b1fb435cf12f7b5502d6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the Comment",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Comment not found."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/comments": {
+            "get": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Get Comment List",
+                "description": "Get Comment List as Array",
+                "operationId": "359c8133610c64aff27575e8550463eb",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "post_id": {
+                                                "type": "integer",
+                                                "example": 2
+                                            },
+                                            "user_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "body": {
+                                                "type": "string",
+                                                "example": "Hello, World!"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Comment"
+                ],
+                "summary": "Create New Comment",
+                "description": "Create New Comment",
+                "operationId": "b825013c39f73ec9a784055b98e450b3",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "post_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Hello, I am Emil!"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "post_id": {
+                                            "type": "integer",
+                                            "example": 2
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "body": {
+                                            "type": "string",
+                                            "example": "Hello, I am Emil!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "integer",
+                                            "example": "The body field is required."
+                                        },
+                                        "errors": {
+                                            "properties": {
+                                                "body": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "example": "The body field is required."
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/posts/{id}": {
             "put": {
                 "tags": [
                     "Post"
                 ],
                 "summary": "Update Post",
                 "description": "Update Post",
-                "operationId": "c8986db16dcb29e5036b2c5e7ccd44f6",
+                "operationId": "c41a064949f8a11ffca6d7747df1d7fb",
                 "parameters": [
                     {
-                        "name": "post",
+                        "name": "id",
                         "in": "path",
                         "description": "ID of the Post",
                         "required": true,
@@ -128,10 +440,10 @@
                 ],
                 "summary": "Delete Post",
                 "description": "Delete Post",
-                "operationId": "0b6fa86b74369207140da3ff83bb89e5",
+                "operationId": "2071549a3e489194455442e1940d04d2",
                 "parameters": [
                     {
-                        "name": "post",
+                        "name": "id",
                         "in": "path",
                         "description": "ID of the Post",
                         "required": true,
@@ -169,17 +481,17 @@
                 ]
             }
         },
-        "/api/posts/{post}/comments": {
+        "/api/posts/{id}/comments": {
             "get": {
                 "tags": [
                     "Post"
                 ],
                 "summary": "Get Post's Comments",
                 "description": "Get Post's Comments",
-                "operationId": "d7c322e8a97d17c96ba532d4fa018b44",
+                "operationId": "a74036b78df96967277c57f8aaefd86c",
                 "parameters": [
                     {
-                        "name": "post",
+                        "name": "id",
                         "in": "path",
                         "description": "ID of the Post",
                         "required": true,
@@ -377,6 +689,10 @@
         }
     },
     "tags": [
+        {
+            "name": "Comment",
+            "description": "Comment"
+        },
         {
             "name": "Post",
             "description": "Post"

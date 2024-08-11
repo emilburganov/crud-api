@@ -22,8 +22,8 @@ Route::group(['namespace' => '\App\Http\Controllers\User'], function () {
 Route::group(['namespace' => '\App\Http\Controllers\Comment'], function () {
     Route::get('/comments', 'IndexController');
     Route::post('/comments', 'StoreController');
-    Route::put('/comments/{comment}', 'UpdateController');
-    Route::delete('/comments/{comment}', 'DestroyController');
+    Route::put('/comments/{id}', 'UpdateController');
+    Route::delete('/comments/{id}', 'DestroyController');
 });
 
 
