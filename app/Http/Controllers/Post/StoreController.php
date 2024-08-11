@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Post;
 
-use App\DTOs\Post\PostFormDTO;
+use App\DTOs\Post\UserFormDTO;
 use App\Http\Requests\Post\StoreRequest;
 use App\Http\Resources\PostResource;
 use Illuminate\Http\JsonResponse;
@@ -16,7 +16,7 @@ class StoreController extends BaseController
      */
     public function __invoke(StoreRequest $request): JsonResponse
     {
-        $dto = PostFormDTO::fromRequest($request);
+        $dto = UserFormDTO::fromRequest($request);
 
         $post = $this->service->store($dto);
 
