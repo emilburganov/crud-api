@@ -12,11 +12,11 @@ Route::group(['namespace' => '\App\Http\Controllers\Post'], function () {
 
 Route::group(['namespace' => '\App\Http\Controllers\User'], function () {
     Route::get('/users', 'IndexController');
-    Route::get('/users/{user}/posts', 'GetPostsController');
-    Route::get('/users/{user}/comments', 'GetCommentsController');
+    Route::get('/users/{id}/posts', 'GetPostsController');
+    Route::get('/users/{id}/comments', 'GetCommentsController');
     Route::post('/users', 'StoreController');
-    Route::put('/users/{user}', 'UpdateController');
-    Route::delete('/users/{user}', 'DestroyController');
+    Route::put('/users/{id}', 'UpdateController');
+    Route::delete('/users/{id}', 'DestroyController');
 });
 
 Route::group(['namespace' => '\App\Http\Controllers\Comment'], function () {
