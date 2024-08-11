@@ -23,7 +23,7 @@ namespace App\Http\Controllers\Comment\Swagger;
  *             type="object",
  *             @OA\Property(property="post_id", type="integer", example=1),
  *             @OA\Property(property="user_id", type="integer", example=2),
- *             @OA\Property(property="body", type="string", example="Hello, World!"),
+ *             @OA\Property(property="body", type="string", example="Good!"),
  *         ),
  *      ),
  *     @OA\Response(
@@ -34,7 +34,7 @@ namespace App\Http\Controllers\Comment\Swagger;
  *             @OA\Property(property="id", type="integer", example=1),
  *             @OA\Property(property="post_id", type="integer", example=1),
  *             @OA\Property(property="user_id", type="integer", example=2),
- *             @OA\Property(property="body", type="string", example="Hello, World!"),
+ *             @OA\Property(property="body", type="string", example="Good!"),
  *         ),
  *     ),
  *     @OA\Response(
