@@ -3,7 +3,9 @@
 namespace App\Services\Post;
 
 use App\DTOs\Post\PostFormDTO;
+use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
 class PostService
@@ -48,5 +50,14 @@ class PostService
     public function destroy(Post $post): void
     {
         $post->delete();
+    }
+
+    /**
+     * @param Post $post
+     * @return Collection<int, Comment>
+     */
+    public function getComments(Post $post): Collection
+    {
+        return $post->comments;
     }
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => '\App\Http\Controllers\Post'], function () {
     Route::get('/posts', 'IndexController');
+    Route::get('/posts/{post}/comments', 'GetCommentsController');
     Route::post('/posts', 'StoreController');
     Route::put('/posts/{post}', 'UpdateController');
     Route::delete('/posts/{post}', 'DestroyController');
