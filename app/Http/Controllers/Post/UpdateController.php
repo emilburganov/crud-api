@@ -13,11 +13,19 @@ class UpdateController extends BaseController
 {
     /**
      * @param UpdateRequest $request
-     * @param Post $post
+     * @param int $id
      * @return JsonResponse
      */
-    public function __invoke(UpdateRequest $request, Post $post): JsonResponse
+    public function __invoke(UpdateRequest $request, int $id): JsonResponse
     {
+        $post = Post::find($id);
+
+        if (empty($post)) {
+            return response()->json([
+                "message" => "Post not found."
+            ], Response::HTTP_NOT_FOUND);
+        }
+
         $dto = PostFormDTO::fromRequest($request);
 
         $post = $this->service->update($dto, $post);
