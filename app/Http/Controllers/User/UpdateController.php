@@ -13,11 +13,19 @@ class UpdateController extends BaseController
 {
     /**
      * @param UpdateRequest $request
-     * @param User $user
+     * @param int $id
      * @return JsonResponse
      */
-    public function __invoke(UpdateRequest $request, User $user): JsonResponse
+    public function __invoke(UpdateRequest $request, int $id): JsonResponse
     {
+        $user = User::find($id);
+
+        if (empty($user)) {
+            return response()->json([
+                "message" => "User not found."
+            ], Response::HTTP_NOT_FOUND);
+        }
+
         $dto = UserFormDTO::fromRequest($request);
 
         $user = $this->service->update($dto, $user);
