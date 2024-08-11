@@ -16,3 +16,11 @@ Route::group(['namespace' => '\App\Http\Controllers\User'], function () {
     Route::delete('/users/{user}', 'DestroyController');
 });
 
+Route::group(['namespace' => '\App\Http\Controllers\Comment'], function () {
+    Route::get('/comments', 'IndexController');
+    Route::post('/comments', 'StoreController');
+    Route::put('/comments/{comment}', 'UpdateController');
+    Route::delete('/comments/{comment}', 'DestroyController');
+});
+
+
