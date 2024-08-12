@@ -48,7 +48,7 @@ namespace App\Http\Controllers\Post\Swagger;
  *         description="Unprocessable Entity",
  *         @OA\JsonContent(
  *             type="object",
- *             @OA\Property(property="message", type="integer", example="The body field is required."),
+ *             @OA\Property(property="message", type="string", example="The body field is required."),
  *             @OA\Property(
  *                 property="errors",
  *                 type="object",
