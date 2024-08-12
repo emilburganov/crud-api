@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+/**
+ * Post model CRUD
+ */
 Route::group(['namespace' => '\App\Http\Controllers\Post'], function () {
     Route::get('/posts', 'IndexController');
     Route::get('/posts/{id}/comments', 'GetCommentsController');
@@ -10,6 +13,9 @@ Route::group(['namespace' => '\App\Http\Controllers\Post'], function () {
     Route::delete('/posts/{id}', 'DestroyController');
 });
 
+/**
+ * User model CRUD
+ */
 Route::group(['namespace' => '\App\Http\Controllers\User'], function () {
     Route::get('/users', 'IndexController');
     Route::get('/users/{id}/posts', 'GetPostsController');
@@ -19,6 +25,9 @@ Route::group(['namespace' => '\App\Http\Controllers\User'], function () {
     Route::delete('/users/{id}', 'DestroyController');
 });
 
+/**
+ * Comment model CRUD
+ */
 Route::group(['namespace' => '\App\Http\Controllers\Comment'], function () {
     Route::get('/comments', 'IndexController');
     Route::post('/comments', 'StoreController');

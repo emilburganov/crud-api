@@ -10,11 +10,19 @@ readonly class CommentFormDTO
     public int $user_id;
     public string $body;
 
+    /**
+     * @param Request $request
+     * @return CommentFormDTO
+     */
     public static function fromRequest(Request $request): CommentFormDTO
     {
         return self::createFromArray($request->all());
     }
 
+    /**
+     * @param array $data
+     * @return CommentFormDTO
+     */
     public static function createFromArray(array $data): CommentFormDTO
     {
         $dto = new self();
