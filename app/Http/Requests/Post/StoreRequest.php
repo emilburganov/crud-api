@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'user_id' => ['required', 'integer', 'exists:users,id'],
-            'body' => ['required', 'string', 'min:10', 'max:65535'],
+            'body' => ['required', 'string', 'min:10', 'max:50000'],
         ];
     }
 }
