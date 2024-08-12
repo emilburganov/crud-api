@@ -17,9 +17,7 @@ class DestroyController extends BaseController
         $comment = Comment::find($id);
 
         if (empty($comment)) {
-            return response()->json([
-                'message' => 'Comment not found.'
-            ], Response::HTTP_NOT_FOUND);
+            return response()->json(['message' => 'Comment not found.'], Response::HTTP_NOT_FOUND);
         }
 
         $this->service->destroy($comment);

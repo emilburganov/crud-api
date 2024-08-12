@@ -18,9 +18,7 @@ class GetCommentsController extends BaseController
         $post = Post::find($id);
 
         if (empty($post)) {
-            return response()->json([
-                'message' => 'Post not found.'
-            ], Response::HTTP_NOT_FOUND);
+            return response()->json(['message' => 'Post not found.'], Response::HTTP_NOT_FOUND);
         }
 
         $comments = $this->service->getComments($post);

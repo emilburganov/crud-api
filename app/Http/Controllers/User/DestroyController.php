@@ -17,9 +17,7 @@ class DestroyController extends BaseController
         $user = User::find($id);
 
         if (empty($user)) {
-            return response()->json([
-                'message' => 'User not found.'
-            ], Response::HTTP_NOT_FOUND);
+            return response()->json(['message' => 'User not found.'], Response::HTTP_NOT_FOUND);
         }
 
         $this->service->destroy($user);
