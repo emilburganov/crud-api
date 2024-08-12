@@ -18,7 +18,7 @@ class DestroyController extends BaseController
 
         if (empty($post)) {
             return response()->json([
-                "message" => "Post not found."
+                'message' => 'Post not found.'
             ], Response::HTTP_NOT_FOUND);
         }
 

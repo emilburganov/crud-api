@@ -22,7 +22,7 @@ class UpdateController extends BaseController
 
         if (empty($comment)) {
             return response()->json([
-                "message" => "Comment not found."
+                'message' => 'Comment not found.'
             ], Response::HTTP_NOT_FOUND);
         }
 

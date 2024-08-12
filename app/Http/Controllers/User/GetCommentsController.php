@@ -19,7 +19,7 @@ class GetCommentsController extends BaseController
 
         if (empty($user)) {
             return response()->json([
-                "message" => "User not found."
+                'message' => 'User not found.'
             ], Response::HTTP_NOT_FOUND);
         }
 
